@@ -33,6 +33,15 @@ jobs:
         run: yarn lint
       - name: Check types
         run: yarn check-types
+      - name: Build Storybook
+        run: yarn build-storybook
+      - name: Deploy Storybook
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy storybook-static --project-name=bulletproof-react-storybook
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
   e2e:
     timeout-minutes: 60
     runs-on: ubuntu-latest
