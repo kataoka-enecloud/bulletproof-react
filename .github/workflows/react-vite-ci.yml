@@ -1,15 +1,16 @@
 name: React Vite CI
 on:
   push:
-    branches: ["*"]
+    branches: ['*']
     paths-ignore:
-      - "README.md"
-      - "docs/**"
+      - 'README.md'
+      - 'docs/**'
   pull_request:
     branches: [master]
     paths-ignore:
-      - "README.md"
-      - "docs/**"
+      - 'README.md'
+      - 'docs/**'
+  workflow_dispatch:
 jobs:
   all-cli-checks:
     runs-on: ubuntu-latest
